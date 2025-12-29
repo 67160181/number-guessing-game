@@ -18,6 +18,14 @@ function checkGuess() {
   const guessValue = parseInt(guessInput.value);
   const resultContainer = document.getElementById("resultContainer");
   // Validation: ตรวจสอบว่าใส่ตัวเลขหรือไม่
+  if (guessValue === secretNumber) {
+    resultContainer.innerHTML = `
+ <div class="alert alert-success" role="alert">
+ <h5>✓ ถูกต้อง!</h5>
+ <p>คุณทายถูกในครั้งที่ ${attemptCount}</p>
+ </div>
+ `;
+  }
   if (isNaN(guessValue) || guessInput.value === "") {
     resultContainer.innerHTML = `
  <div class="alert alert-danger" role="alert">
@@ -60,7 +68,7 @@ function checkGuess() {
   guessInput.value = "";
   guessInput.focus();
 }
-// ...existing code...
+// ตัวแปรนับจํานวนครั้งที่ทาย
 // ฟังก์ชันอัปเดตจํานวนครั้ง
 function updateDisplay() {
   const attemptsContainer = document.getElementById("attemptsContainer");
